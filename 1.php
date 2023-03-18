@@ -1,16 +1,13 @@
-<?php
-include_once "db_conn.php";
-
-if(!$conn){
-    die("Connection failed: ".mysqli_connect_error());
-}
-$item_id = $_GET['item_id'];
-$sql ="DELETE FROM products WHERE item_id = $item_id";
-
-if (mysqli_query($conn, $sql)) {
-    header("location: index.php?recordeleted successfully");
-} else {
-    header("location:index.php?error deleting record");
-}
-mysqli_close($conn);
-?>
+<form action="update.php" method="POST">
+                    <div class="mb-3">
+                       <label for="">Item Name</label>
+                        <input type="text" hidden name="p.item_id" value="<?php echo $item_id; ?>" class="form-control">
+                        <input type="text" name="p.item_name" value="<?php echo $item_name; ?>" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                       <label for="">Item Price</label>
+                        <input type="item_price" name="p.item_price" value="<?php echo $item_price; ?>" class="form-control">
+                    </div>
+                    
+                    <input type="submit" class="btn btn-primary">
+                </form>
